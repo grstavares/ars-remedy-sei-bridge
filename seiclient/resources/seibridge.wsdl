@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:sei="http://arsint-wa-01.mec.gov.br/sei/"
+	 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="sei"
+		targetNamespace="http://arsint-wa-01.mec.gov.br/sei/">
+		
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://arsint-wa-01.mec.gov.br/sei/">
+      
+      <xsd:element name="getStatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="numeroSEI" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getStatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getLancamento">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="numeroSEI" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="getLancamentoResponse">
+      	<xsd:complexType>
+      		<xsd:all>
+      			<xsd:element name="numeroSEI" type="xsd:string"/>
+      			<xsd:element name="dataHora" type="xsd:string"/>
+      			<xsd:element name="unidade" type="xsd:string"/>
+      			<xsd:element name="descricao" type="xsd:string"/>
+      		</xsd:all>
+      	</xsd:complexType>
+      </xsd:element>
+      
+    </xsd:schema>
+    
+  </wsdl:types>
+  
+  <wsdl:message name="getStatusRequest">
+    <wsdl:part element="sei:getStatus" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part element="sei:getStatusResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getLancamentoRequest">
+  	<wsdl:part name="parameters" element="sei:getLancamento"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLancamentoResponse">
+  	<wsdl:part name="parameters" element="sei:getLancamentoResponse"></wsdl:part>
+  </wsdl:message>
+  
+  <wsdl:portType name="sei">
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="sei:getStatusRequest"/>
+      <wsdl:output message="sei:getStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getLancamento">
+    	<wsdl:input message="sei:getLancamentoRequest"></wsdl:input>
+    	<wsdl:output message="sei:getLancamentoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="seiSOAP" type="sei:sei">
+    
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    
+    <wsdl:operation name="getStatus">
+      
+      <soap:operation soapAction="http://arsint-wa-01.mec.gov.br/sei/getStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+    
+    <wsdl:operation name="getLancamento">
+      
+      <soap:operation soapAction="http://arsint-wa-01.mec.gov.br/sei/getLancamento"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      
+    </wsdl:operation>
+    
+  </wsdl:binding>
+  
+  <wsdl:service name="sei">
+    <wsdl:port binding="sei:seiSOAP" name="seibridge">
+      <soap:address location="http://arsint-wa-01.mec.gov.br"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

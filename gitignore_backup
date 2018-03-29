@@ -1,0 +1,5 @@
+credentials*
+/target/*
+.project
+.classpath
+.settings/*

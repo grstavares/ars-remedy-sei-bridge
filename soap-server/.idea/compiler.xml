@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="seiClient" />
+        <module name="seiclient" />
+        <module name="spring-soap-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client" target="1.8" />
+      <module name="gs-consuming-web-service" target="1.8" />
+      <module name="seiclient" target="1.5" />
+      <module name="seiClient" target="1.5" />
+      <module name="simpletest" target="1.5" />
+      <module name="soap-client" target="1.8" />
+      <module name="soap-server" target="1.8" />
+      <module name="soap-server-spring" target="1.8" />
+      <module name="spring-soap-server" target="1.8" />
+      <module name="springsoapserver" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
